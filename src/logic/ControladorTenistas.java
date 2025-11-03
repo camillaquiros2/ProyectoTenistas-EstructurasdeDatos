@@ -56,16 +56,21 @@ public class ControladorTenistas {
     }
 
     // --- MOSTRAR LISTA EN CONSOLA ---
-    public void mostrarLista() {
+    public String mostrarLista() {
         if (lista.isEmpty()) {
-            System.out.println("No hay tenistas registrados.");
-            return;
+            return "No hay tenistas registrados";
         }
-        System.out.printf("%-20s %-15s %-5s %-8s%n", "Tenista", "País", "Edad", "Puntaje");
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%-20s %-15s %-5s %-10s%n", "Tenista", "País", "Edad", "Puntaje"));
+
         for (Tenista t : lista) {
-            System.out.println(t);
+            sb.append(t.toString()).append("\n");
         }
+
+        return sb.toString();
     }
+
 
     // --- ACTUALIZAR LISTA DESDE ARREGLO ---
     private void actualizarLista(Tenista[] arr) {
