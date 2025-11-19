@@ -47,14 +47,15 @@ public class PanelIngreso {
     private void agregarTenista(ControladorTenistas controlador, VistaTablaTenistas vistaTabla) {
         String nombre = nombreInput.getText().trim();
         String pais = paisInput.getText().trim();
+
         int edad;
-        int puntaje;
+        double puntaje;
 
         try {
             edad = Integer.parseInt(edadInput.getText().trim());
-            puntaje = Integer.parseInt(puntajeInput.getText().trim());
+            puntaje = Double.parseDouble(puntajeInput.getText().trim());
         } catch (NumberFormatException e) {
-            mostrarAlerta("Edad y puntaje deben ser números válidos.");
+            mostrarAlerta("Edad debe ser un número entero y puntaje puede ser decimal.");
             return;
         }
 

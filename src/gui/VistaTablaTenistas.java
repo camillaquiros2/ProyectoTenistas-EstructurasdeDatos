@@ -19,20 +19,28 @@ public class VistaTablaTenistas {
         tablaTenistas = new TableView<>();
         datos = FXCollections.observableArrayList(controlador.obtenerTenistas());
 
+        // --- Columnas ---
         TableColumn<Tenista, String> nombreCol = new TableColumn<>("Nombre");
         nombreCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        nombreCol.setMinWidth(150);
 
         TableColumn<Tenista, String> paisCol = new TableColumn<>("País");
         paisCol.setCellValueFactory(new PropertyValueFactory<>("pais"));
+        paisCol.setMinWidth(120);
 
         TableColumn<Tenista, Integer> edadCol = new TableColumn<>("Edad");
         edadCol.setCellValueFactory(new PropertyValueFactory<>("edad"));
+        edadCol.setMinWidth(80);
 
-        TableColumn<Tenista, Integer> puntajeCol = new TableColumn<>("Puntaje");
+        TableColumn<Tenista, Double> puntajeCol = new TableColumn<>("Puntaje");
         puntajeCol.setCellValueFactory(new PropertyValueFactory<>("puntaje"));
+        puntajeCol.setMinWidth(100);
 
+        // Agregar columnas a la tabla
         tablaTenistas.getColumns().addAll(nombreCol, paisCol, edadCol, puntajeCol);
         tablaTenistas.setItems(datos);
+
+        // Ajuste automático de tamaño
         tablaTenistas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         panelTabla = new VBox(tablaTenistas);

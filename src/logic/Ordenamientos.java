@@ -4,9 +4,9 @@ import model.Tenista;
 
 public class Ordenamientos {
 
-    // Comparar por puntaje (descendente)
+    // Comparar por puntaje (descendente) usando double
     public static int compararPorPuntaje(Tenista a, Tenista b) {
-        return Integer.compare(b.getPuntaje(), a.getPuntaje());
+        return Double.compare(b.getPuntaje(), a.getPuntaje());
     }
 
     // Comparar por edad (ascendente)
@@ -20,8 +20,7 @@ public class Ordenamientos {
         return (pais != 0) ? pais : a.getNombre().compareToIgnoreCase(b.getNombre());
     }
 
-
-    // --- ORDENAMIENTO QUICK SORT (PUNTAJE DESCENDENTE) ---
+    // --- QUICK SORT (PUNTAJE DESCENDENTE) ---
     public static void quicksortPorPuntaje(Tenista[] arr, int izq, int der) {
         if (arr == null || arr.length == 0) return;
         int i = izq, j = der;
@@ -43,8 +42,7 @@ public class Ordenamientos {
         if (i < der) quicksortPorPuntaje(arr, i, der);
     }
 
-
-    // --- ORDENAMIENTO POR INSERCIÓN (EDAD ASCENDENTE) ---
+    // --- INSERCIÓN (EDAD ASCENDENTE) ---
     public static void insercionPorEdad(Tenista[] arr) {
         if (arr == null) return;
         for (int i = 1; i < arr.length; i++) {
@@ -58,8 +56,7 @@ public class Ordenamientos {
         }
     }
 
-
-    // --- ORDENAMIENTO SHELLSORT (PAÍS + NOMBRE ASCENDENTE) ---
+    // --- SHELLSORT (PAÍS + NOMBRE ASCENDENTE) ---
     public static void shellsortPorPaisNombre(Tenista[] arr) {
         if (arr == null) return;
         int n = arr.length;
@@ -74,20 +71,6 @@ public class Ordenamientos {
                 }
                 arr[j] = temp;
             }
-        }
-    }
-
-
-    // --- MOSTRAR TABLA DE TENISTAS ---
-    public static void mostrarTenistas(Tenista[] lista) {
-        if (lista == null || lista.length == 0) {
-            System.out.println("No hay tenistas para mostrar.");
-            return;
-        }
-
-        System.out.printf("%-20s %-15s %-5s %-8s%n", "Tenista", "País", "Edad", "Puntaje");
-        for (Tenista t : lista) {
-            if (t != null) System.out.println(t);
         }
     }
 
